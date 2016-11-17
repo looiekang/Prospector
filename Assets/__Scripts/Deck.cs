@@ -289,4 +289,4 @@ public class Deck : MonoBehaviour {
 	 	oCards = tCards;
 	 }
 	
-} // Deck class
+} 
