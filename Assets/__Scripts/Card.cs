@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 public class Card : MonoBehaviour {
 
-	public string    suit;
-	public int       rank;
-	public Color     color = Color.black;
-	public string    colS = "Black";  // or "Red"
-	
-	public List<GameObject> decoGOs = new List<GameObject>();
-	public List<GameObject> pipGOs = new List<GameObject>();
-	
-	public GameObject back;     // back of card;
-	public CardDefinition def;  // from DeckXML.xml		
+    public string suit;
+    public int rank;
+    public Color color = Color.black;
+    public string colS = "Black";  // or "Red"
+
+    public List<GameObject> decoGOs = new List<GameObject>();
+    public List<GameObject> pipGOs = new List<GameObject>();
+
+    public GameObject back;     // back of card;
+    public CardDefinition def;  // from DeckXML.xml		
 
     // List of the SpriteRenderer Components of this GameObject and its children
     public SpriteRenderer[] spriteRenderers;
@@ -23,15 +23,15 @@ public class Card : MonoBehaviour {
         SetSortOrder(0);  // Ensures that the card starts properly depth sorted
     }
 
-    
+
     public bool faceUP {
-		get {
-			return (!back.activeSelf);
-		}		
-		set {
-			back.SetActive(!value);
-		}
-	}
+        get {
+            return (!back.activeSelf);
+        }
+        set {
+            back.SetActive(!value);
+        }
+    }
 
     // If spriteRenderers is not yet defined, this function defines it
     public void PopulateSpriteRenderers()
@@ -90,9 +90,17 @@ public class Card : MonoBehaviour {
             }
         }
     }
+    // Virtual methods can be overridden by subclass methods with the same name
+    virtual public void OnMouseUpAsButton()
+    {
+        print(name);  // When clicked, this outputs the card name
+    }
+}
+
+// class Card
 
 
-[System.Serializable]
+    [System.Serializable]
 public class Decorator{
 	public string	type;			// For card pips, tyhpe = "pip"
 	public Vector3	loc;			// location of sprite on the card
@@ -107,4 +115,5 @@ public class CardDefinition{
 	public List<Decorator>	
 					pips = new List<Decorator>();  // Pips Used					
 } 
-    }
+    
+
