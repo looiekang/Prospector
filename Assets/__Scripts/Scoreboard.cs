@@ -10,7 +10,7 @@ public class Scoreboard : MonoBehaviour
     public GameObject prefabFloatingScore;
 
     public bool ________________;
-    [Serialize Field]
+    [SerializeField]
     private int _score = 0;
     public string _scoreString;
 
